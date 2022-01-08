@@ -80,6 +80,7 @@ impl Display for Error {
 
 impl std::error::Error for Error {}
 
+#[derive(Debug)]
 /// Sensor data accuracy
 pub enum Accuracy {
     /// Undefined
@@ -146,6 +147,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Accelerometer {}
 
+    #[derive(Debug)]
     pub struct AccelerometerEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -180,6 +182,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Gravity {}
 
+    #[derive(Debug)]
     pub struct GravityEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -215,6 +218,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for LinearAcceleration {}
 
+    #[derive(Debug)]
     pub struct LinearAccelerationEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -250,6 +254,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Magnetic {}
 
+    #[derive(Debug)]
     pub struct MagneticEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -285,6 +290,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for RotationVector {}
 
+    #[derive(Debug)]
     pub struct RotationVectorEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -325,6 +331,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Orientation {}
 
+    #[derive(Debug)]
     pub struct OrientationEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -360,6 +367,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Gyroscope {}
 
+    #[derive(Debug)]
     pub struct GyroscopeEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -394,6 +402,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Light {}
 
+    #[derive(Debug)]
     pub struct LightEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -455,6 +464,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Pressure {}
 
+    #[derive(Debug)]
     pub struct PressureEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -484,6 +494,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Ultraviolet {}
 
+    #[derive(Debug)]
     pub struct UltravioletEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -513,6 +524,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Temperature {}
 
+    #[derive(Debug)]
     pub struct TemperatureEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -542,6 +554,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Humidity {}
 
+    #[derive(Debug)]
     pub struct HumidityEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -570,6 +583,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for HeartRateMonitor {}
 
+    #[derive(Debug)]
     pub struct HeartRateMonitorEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -599,6 +613,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for HeartRateMonitorGreenLed {}
 
+    #[derive(Debug)]
     pub struct HeartRateMonitorGreenLedEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -628,6 +643,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for HeartRateMonitorRedLed {}
 
+    #[derive(Debug)]
     pub struct HeartRateMonitorRedLedEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -657,6 +673,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for HeartRateMonitorInfraredLed {}
 
+    #[derive(Debug)]
     pub struct HeartRateMonitorInfraredLedEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -686,6 +703,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for UncalibratedGyroscope {}
 
+    #[derive(Debug)]
     pub struct UncalibratedGyroscopeEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -730,6 +748,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for UncalibratedMagnetic {}
 
+    #[derive(Debug)]
     pub struct UncalibratedMagneticEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -774,6 +793,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for GyroscopeRotationVector {}
 
+    #[derive(Debug)]
     pub struct GyroscopeRotationVectorEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -814,6 +834,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for GeomagneticRotationVector {}
 
+    #[derive(Debug)]
     pub struct GeomagneticRotationVectorEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -854,6 +875,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for SignificantMotion {}
 
+    #[derive(Debug)]
     pub struct SignificantMotionEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -883,6 +905,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for HeartRateMonitorBatch {}
 
+    #[derive(Debug)]
     pub enum HeartRateMonitorBatchState {
         /// Flush but there was no batched data
         NoDataFlush,
@@ -923,6 +946,7 @@ pub mod types {
         }
     }
 
+    #[derive(Debug)]
     pub struct HeartRateMonitorBatchEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -958,6 +982,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for HeartRateMonitorGreenLedBatch {}
 
+    #[derive(Debug)]
     pub struct HeartRateMonitorGreenLedBatchEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -998,6 +1023,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for Pedometer {}
 
+    #[derive(Debug)]
     pub enum PedometerState {
         /// Uncertain
         Unknown,
@@ -1023,6 +1049,7 @@ pub mod types {
         }
     }
 
+    #[derive(Debug)]
     pub struct PedometerEvent {
         /// Units: microseconds
         pub timestamp: u64,
@@ -1072,6 +1099,7 @@ pub mod types {
 
     impl private::SensorTypeSealed for SleepMonitor {}
 
+    #[derive(Debug)]
     pub enum SleepMonitorState {
         /// Uncertain
         Unknown,
@@ -1092,6 +1120,7 @@ pub mod types {
         }
     }
 
+    #[derive(Debug)]
     pub struct SleepMonitorEvent {
         /// Units: microseconds
         pub timestamp: u64,
