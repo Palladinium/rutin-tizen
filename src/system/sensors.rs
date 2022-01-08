@@ -1,5 +1,5 @@
 use std::ffi::CStr;
-use std::fmt::{self, Display, Formatter};
+use std::fmt::{self, Debug, Display, Formatter};
 use std::marker::PhantomData;
 use std::{panic, ptr};
 
@@ -1202,19 +1202,29 @@ where
     fn event(&mut self, event: T::Event);
 }
 
-impl<T, U> SensorEventHandler<T> for U
-where
-    T: SensorType,
-    U: FnMut(T::Event) + Send + Sync + 'static,
-{
-    fn event(&mut self, event: T::Event) {
-        self(event)
-    }
-}
-
 pub struct SensorListenerError<U> {
     pub error: Error,
     pub handler: U,
+}
+
+impl<U> Debug for SensorListenerError<U> {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        f.debug_struct("SensorListenerError")
+            .field("error", &self.error)
+            .finish_non_exhaustive()
+    }
+}
+
+impl<U> Display for SensorListenerError<U> {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "{}", &self.error)
+    }
+}
+
+impl<U> std::error::Error for SensorListenerError<U> {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        Some(&self.error)
+    }
 }
 
 struct SensorListenerHandle(Option<rutin_tizen_sys::sensor_listener_h>);
