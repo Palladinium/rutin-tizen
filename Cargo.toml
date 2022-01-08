@@ -14,3 +14,7 @@ homepage = "https://github.com/andersondanilo/rutin-tizen"
 [dependencies]
 libc = "0.2.107"
 rutin-tizen-sys = "0.1.0"
+
+
+[patch.crates-io]
+rutin-tizen-sys = { path = "/home/patrick/build/rutin-tizen-sys" }
