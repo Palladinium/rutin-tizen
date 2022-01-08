@@ -1,6 +1,6 @@
 use std::ffi::CStr;
 use std::marker::PhantomData;
-use std::ptr;
+use std::{panic, ptr};
 
 use libc::{c_char, c_int, c_void};
 
@@ -1297,11 +1297,13 @@ extern "C" fn sensor_listener_handler<T: SensorType, U: SensorEventHandler<T>>(
     event_count: c_int,
     data: *mut c_void,
 ) {
-    let handler = unsafe { &mut *(data as *mut U) };
-
     for i in 0..event_count as isize {
         let event = unsafe { *events.offset(i) };
-        handler.event(T::Event::from_event(event));
+
+        let _ = panic::catch_unwind(|| {
+            let handler = unsafe { &mut *(data as *mut U) };
+            handler.event(T::Event::from_event(event));
+        });
     }
 }
 
