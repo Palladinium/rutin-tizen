@@ -1,4 +1,5 @@
 use std::ffi::CStr;
+use std::fmt::{self, Display, Formatter};
 use std::marker::PhantomData;
 use std::{panic, ptr};
 
@@ -55,6 +56,29 @@ impl Error {
         }
     }
 }
+
+impl Display for Error {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        match self {
+            Error::InvalidParameter => f.write_str("Invalid parameter"),
+            Error::OutOfMemory => f.write_str("Out of memory"),
+            Error::IoError => {
+                f.write_str("An input/output error occurred when reading value from system")
+            }
+            Error::PermissionDenied => f.write_str("No permission to use the API"),
+            Error::NotSupported => f.write_str("Not supported parameter (Since 3.0)"),
+            Error::NoData => f.write_str("No data available"),
+            Error::NotNeedCalibration => f.write_str("Sensor doesn't need calibration"),
+            Error::OperationFailed => f.write_str("Operation failed"),
+            Error::NotAvailable => {
+                f.write_str("The sensor is supported, but currently not available")
+            }
+            Error::Other(e) => write!(f, "Unknown error: {}", e),
+        }
+    }
+}
+
+impl std::error::Error for Error {}
 
 /// Sensor data accuracy
 pub enum Accuracy {
