@@ -1178,6 +1178,16 @@ where
     fn event(&mut self, event: T::Event);
 }
 
+impl<T, U> SensorEventHandler<T> for U
+where
+    T: SensorType,
+    U: FnMut(T::Event) + Send + Sync + 'static,
+{
+    fn event(&mut self, event: T::Event) {
+        self(event)
+    }
+}
+
 pub struct SensorListenerError<U> {
     pub error: Error,
     pub handler: U,
